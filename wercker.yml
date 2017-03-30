@@ -15,16 +15,17 @@ build:
     - wercker/golint
 
     # Build the project
+    # Build the project
     - script:
         name: go build
         code: |
-          go build ./...
+          go build
 
     # Test the project
     - script:
         name: go test
         code: |
-          go test ./...
+          go test
 
     - script:
         name: copy files to wercker output
