@@ -10,6 +10,12 @@ dev:
 build:
   # The steps that will be executed on build
   steps:
+    - setup-go-workspace:
+        package-dir: github.com/vitor-caetano/getting-started-golang
+
+    - script:
+        name: env
+        code: env
 
     # golint step!
     - wercker/golint
@@ -37,6 +43,8 @@ deploy:
    - internal/docker-push:
        username: $DOCKER_USERNAME
        password: $DOCKER_PASSWORD
+       cmd: /pipeline/source/hello
+       port: "5000"
        tag: latest
        repository: vitorcaetano/getting-started-golang
        registry: https://registry.hub.docker.com
